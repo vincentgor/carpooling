@@ -36,6 +36,7 @@
     			<!-- 一下用来列出所有的PO映射文件 -->
     			<value>com/vinxent/model/Guest.hbm.xml</value>
     			<value>com/vinxent/model/Driver.hbm.xml</value>
+    			<value>com/vinxent/model/Order.hbm.xml</value>
     		</list>
     	</property>
     	<property name="hibernateProperties">
@@ -96,6 +97,20 @@
  	<bean id="driverAction" class="com.vinxent.controller.DriverAction" scope="prototype">
  		<property name="driver" ref="myDriver"></property>
  		<property name="driverService" ref="myDriverService"></property>
+ 	</bean>
+ 	
+ 	<!-- 拼单action -->
+ 	<bean id="myOrder" class="com.vinxent.model.Order">
+ 	</bean>
+ 	<bean id="myOrderDao" class="com.vinxent.daoImpl.OrderDaoHibernate">
+ 		<property name="sessionFactory" ref="sessionFactory"></property>
+ 	</bean>
+ 	<bean id="myOrderService" class="com.vinxent.serviceImpl.OrderServiceImpl">
+ 		<property name="OrderDao" ref="myOrderDao"></property>
+ 	</bean>
+ 	<bean id="orderAction" class="com.vinxent.controller.OrderAction" scope="prototype">
+  <!-- 		<property name="order" ref="myOrder"></property>  -->
+ 		<property name="orderService" ref="myOrderService"></property>
  	</bean>
  
  </beans>

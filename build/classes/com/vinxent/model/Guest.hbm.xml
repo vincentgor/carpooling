@@ -10,7 +10,7 @@
             <generator class="identity" />
         </id>
         <property name="nickName"/>
-        <property name="cellphone"  not-null="true" />
+        <property name="cellphone" unique="true" not-null="true" />
         <property name="password"  not-null="true" />
     </class>
 </hibernate-mapping>

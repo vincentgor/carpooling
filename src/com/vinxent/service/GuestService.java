@@ -49,4 +49,17 @@ public interface GuestService {
 	 */
 	public List<Guest> findAllGuests();
 	
+	/**
+	 * 拼客登录
+	 * @return 登录成功与否
+	 */
+	public boolean login(Guest guest);
+
+	/**
+	 * 拼客注册
+	 * @param guest
+	 * @return 注册成功与否
+	 */
+	public boolean regist(Guest guest);
+	
 }

@@ -43,6 +43,15 @@ public class GuestDaoHibernate extends HibernateDaoSupport implements GuestDao {
 	@Override
 	public List<Guest> findAll() {
 		return (List<Guest>) getHibernateTemplate().find("from Guest");
+	}
+
+	@Override
+	public Guest findByCellphone(String cellphone) {
+		List list = getHibernateTemplate().find("from Guest as g where g.cellphone=?", cellphone);
+		if (list.size()!=0) {
+			return (Guest) list.get(0);
+		}
+		return null;
 	}	
 
 }

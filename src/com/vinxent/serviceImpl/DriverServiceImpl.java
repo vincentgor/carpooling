@@ -44,7 +44,34 @@ public class DriverServiceImpl implements DriverService {
 	public List<Driver> findAllDriver() {
 		return driverDao.findAll();
 	}
-
+	
+	@Override
+	public boolean login(Driver driver) {
+		Driver driverTemp = driverDao.findByCellphone(driver.getCellphone());
+		if(driverTemp==null) {
+			System.out.println("用户名不存在，无法登录");
+			return false;
+		}
+		if (!driverTemp.getPassword().equals(driver.getPassword())) {
+			System.out.println("密码不正确，无法登录");
+			return false;
+		}
+		System.out.println("成功啦");
+		return true;
+	}
+	
+	@Override
+	public boolean regist(Driver driver) {
+		Driver driverTemp = driverDao.findByCellphone(driver.getCellphone());
+		if(driverTemp!=null) {
+			System.out.println("此手机号码已经注册");
+			return false;
+		}
+		System.out.println(driverDao.save(driver));
+		System.out.println("注册成功");
+		return true;
+	}
+	
 	
 	public DriverDao getDriverDao() {
 		return driverDao;
@@ -53,5 +80,4 @@ public class DriverServiceImpl implements DriverService {
 	public void setDriverDao(DriverDao driverDao) {
 		this.driverDao = driverDao;
 	}
-
 }

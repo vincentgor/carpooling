@@ -28,7 +28,15 @@ public class DriverAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String doLogin() throws Exception {	
-		return SUCCESS;
+		driver.setCellphone(cellphone);
+		driver.setPassword(password);
+		if(driverService.login(driver)==true) {
+			System.out.println("µÇÂ¼³É¹¦");
+			return SUCCESS;
+		} else {
+			System.out.println("µÇÂ¼Ê§°Ü");
+			return ERROR;
+		}
 	}
 	
 	/**
@@ -37,7 +45,16 @@ public class DriverAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String doRegist() throws Exception {
-		return SUCCESS;
+		driver.setCellphone(cellphone);
+		driver.setPassword(password);
+		driver.setNickName(nickName);
+		if(driverService.regist(driver)) {
+			System.out.println("×¢²á³É¹¦");
+			return SUCCESS;
+		} else {
+			System.out.println("×¢²áÊ§°Ü");
+			return ERROR;
+		}
 	}
 	
 	

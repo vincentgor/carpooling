@@ -20,7 +20,6 @@ public class GuestServiceImpl implements GuestService {
 		return guestDao.save(guest);
 	}
 	
-	
 	@Override
 	public Guest findGuest(Integer id) {
 		return guestDao.get(id);
@@ -48,8 +47,35 @@ public class GuestServiceImpl implements GuestService {
 	public List<Guest> findAllGuests() {
 		return guestDao.findAll();
 	}
-	
 
+	@Override
+	public boolean login(Guest guest) {
+		Guest guestTemp = guestDao.findByCellphone(guest.getCellphone());
+		if(guestTemp==null) {
+			System.out.println("用户名不存在，无法登录");
+			return false;
+		}
+		if (!guestTemp.getPassword().equals(guest.getPassword())) {
+			System.out.println("密码不正确，无法登录");
+			return false;
+		}
+		System.out.println("成功啦");
+		return true;
+	}
+	
+	@Override
+	public boolean regist(Guest guest) {
+		Guest guestTemp = guestDao.findByCellphone(guest.getCellphone());
+		if(guestTemp!=null) {
+			System.out.println("此手机号码已经注册");
+			return false;
+		}
+		System.out.println(guestDao.save(guest));
+		System.out.println("注册成功");
+		return true;
+	}
+	
+	
 	public GuestDao getGuestDao() {
 		return guestDao;
 	}
@@ -57,4 +83,5 @@ public class GuestServiceImpl implements GuestService {
 	public void setGuestDao(GuestDao guestDao) {
 		this.guestDao = guestDao;
 	}
+
 }

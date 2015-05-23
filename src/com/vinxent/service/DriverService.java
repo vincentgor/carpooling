@@ -13,7 +13,7 @@ public interface DriverService {
 	
 	/**
 	 * 司机注册
-	 * @param guest
+	 * @param driver
 	 * @return
 	 */
 	public Integer addDriver(Driver driver);
@@ -27,13 +27,13 @@ public interface DriverService {
 	
 	/**
 	 * 更改信息
-	 * @param guest
+	 * @param driver
 	 */
 	public void updateDriver(Driver driver);
 	
 	/**
 	 * 注销司机
-	 * @param guest
+	 * @param driver
 	 */
 	public void deleteDriver(Driver driver);
 	
@@ -48,5 +48,18 @@ public interface DriverService {
 	 * @return
 	 */
 	public List<Driver> findAllDriver();
+	
+	/**
+	 * 司机登录
+	 * @return 登录成功与否
+	 */
+	public boolean login(Driver driver);
+
+	/**
+	 * 司机注册
+	 * @param driver
+	 * @return 注册成功与否
+	 */
+	public boolean regist(Driver driver);
 	
 }

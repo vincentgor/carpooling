@@ -48,6 +48,12 @@ public interface DriverDao {
 	 * @return
 	 */
 	public List<Driver> findAll();
-	
+
+	/**
+	 * 根据手机号码进行查询
+	 * @param cellphone
+	 * @return
+	 */
+	public Driver findByCellphone(String cellphone);
 	
 }

@@ -49,5 +49,11 @@ public interface GuestDao {
 	 */
 	public List<Guest> findAll();
 	
+	/**
+	 * 根据手机号码进行查询
+	 * @param cellphone
+	 * @return
+	 */
+	public Guest findByCellphone(String cellphone);
 	
 }

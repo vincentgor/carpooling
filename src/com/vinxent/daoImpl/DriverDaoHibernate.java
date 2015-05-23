@@ -43,6 +43,15 @@ public class DriverDaoHibernate extends HibernateDaoSupport implements DriverDao
 	@Override
 	public List<Driver> findAll() {
 		return (List<Driver>) getHibernateTemplate().find("from Driver");
+	}
+
+	@Override
+	public Driver findByCellphone(String cellphone) {
+		List list = getHibernateTemplate().find("from Driver as d where d.cellphone=?", cellphone);
+		if (list.size()!=0) {
+			return (Driver) list.get(0);
+		}
+		return null;
 	}	
 
 }

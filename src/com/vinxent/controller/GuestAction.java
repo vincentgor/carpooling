@@ -28,7 +28,15 @@ public class GuestAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String doLogin() throws Exception {
-		return SUCCESS;
+		guest.setCellphone(cellphone);
+		guest.setPassword(password);
+		if(guestService.login(guest)==true) {
+			System.out.println("µÇÂ¼³É¹¦");
+			return SUCCESS;
+		} else {
+			System.out.println("µÇÂ¼Ê§°Ü");
+			return ERROR;
+		}
 	}
 	
 	/**
@@ -37,7 +45,16 @@ public class GuestAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String doRegist() throws Exception {
-		return SUCCESS;
+		guest.setCellphone(cellphone);
+		guest.setPassword(password);
+		guest.setNickName(nickName);
+		if(guestService.regist(guest)) {
+			System.out.println("×¢²á³É¹¦");
+			return SUCCESS;
+		} else {
+			System.out.println("×¢²áÊ§°Ü");
+			return ERROR;
+		}
 	}
 	
 	public Guest getGuest() {
