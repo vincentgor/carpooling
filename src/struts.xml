@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 资源访问控制 -->
+	<constant name="struts.action.extension" value="" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.multipart.maxSize" value="1073741824" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.objectFactory" value="spring" />
+
+
+	<!-- 测试 -->
+	<package name="testStruts" extends="struts-default">
+		<action name="testStruts.action" class="guestAction" method="test" >
+			<result>index1.jsp</result>
+		</action>
+	</package>
+
+
+	<!-- 拼客功能包 -->
+	<package name="Guest" extends="json-default">
+		<action name="doGuestLogin.action" class="guestAction" method="doLogin" >
+			<result type="json" name="success">
+				<param name="root">guest</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">guest</param>
+			</result>
+		</action>
+	</package>
+	
+	
+	<!-- 司机功能包 -->
+	<package name="Driver" extends="json-default">
+		<action name="doDriverLogin.action" class="driverAction" method="doLogin" >
+			<result type="json" name="success">
+				<param name="root">driver</param>
+			</result>
+			<result type="json" name="error">
+				<param name="root">driver</param>
+			</result>
+		</action>
+	</package>
+	
+
+</struts>    

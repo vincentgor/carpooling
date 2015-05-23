@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+    
+    <!-- 配置hibernate,定义数据源Bean, 使用c3p0数据源实现 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+    	<!-- 指定数据库的驱动 -->
+    	<property name="driverClass" value="com.mysql.jdbc.Driver" />
+    	<!-- 指定数据库的url -->
+    	<property name="jdbcUrl" value="jdbc:mysql://localhost/carpooling" />
+    	<!-- 用户名 -->
+    	<property name="user" value="uniframework" />
+    	<!-- 密码 -->
+    	<property name="password" value="uniframework" />
+    	<!-- 最大连接数 -->
+    	<property name="maxPoolSize" value="40" />
+    	<!-- 最小连接数 -->
+    	<property name="minPoolSize" value="1" />
+    	<!-- 初始化连接数 -->
+    	<property name="initialPoolSize" value="1" />
+    	<!-- 指定链接数据库连接池的链接最大空闲时间 -->
+    	<property name="maxIdleTime" value="20" />   
+    </bean>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    	<property name="dataSource" ref="dataSource" />
+    	<property name="mappingResources">
+    		<list>
+    			<!-- 一下用来列出所有的PO映射文件 -->
+    			<value>com/vinxent/model/Guest.hbm.xml</value>
+    			<value>com/vinxent/model/Driver.hbm.xml</value>
+    		</list>
+    	</property>
+    	<property name="hibernateProperties">
+    		<!-- 设置hibernate属性 -->
+    		<value>
+    			hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
+    			hibernate.hbm2ddl.auto=update
+    			hibernate.show_sql=true
+    			hibernate.format_sql=true;
+    		</value>
+    	</property>
+    </bean>
+    
+    
+<!--    事务管理，暂定
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    	<property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+    	<tx:attributes>
+    		<tx:method name="get*" read-only="true" />
+    		<tx:method name="*" />
+    	</tx:attributes>
+    </tx:advice>
+    <aop:config>
+    	<aop:pointcut id="guestPointcut" expression="bean(myGuestService)" />
+    	<aop:advisor advice-ref="txAdvice" pointcut-ref="guestPointcut"/>
+    </aop:config>
+-->    
+  
+    
+ 	
+ 	<!-- 拼客action -->
+ 	<bean id="myGuest" class="com.vinxent.model.Guest">
+ 		<property name="nickName" value="vinxent_gorgor" />
+ 	</bean>
+ 	<bean id="myGuestDao" class="com.vinxent.daoImpl.GuestDaoHibernate">
+ 		<property name="sessionFactory" ref="sessionFactory"></property>
+ 	</bean>
+ 	<bean id="myGuestService" class="com.vinxent.serviceImpl.GuestServiceImpl">
+ 		<property name="guestDao" ref="myGuestDao"></property>
+ 	</bean>
+ 	<bean id="guestAction" class="com.vinxent.controller.GuestAction" scope="prototype">
+ 		<property name="guest" ref="myGuest"></property>
+ 		<property name="guestService" ref="myGuestService"></property>
+ 	</bean>
+ 	
+ 	<!-- 司机action -->
+ 	<bean id="myDriver" class="com.vinxent.model.Driver">
+ 		<property name="nickName" value="vinxent_gorgorgor" />
+ 	</bean>
+ 	<bean id="myDriverDao" class="com.vinxent.daoImpl.DriverDaoHibernate">
+ 		<property name="sessionFactory" ref="sessionFactory"></property>
+ 	</bean>
+ 	<bean id="myDriverService" class="com.vinxent.serviceImpl.DriverServiceImpl">
+ 		<property name="DriverDao" ref="myDriverDao"></property>
+ 	</bean>
+ 	<bean id="driverAction" class="com.vinxent.controller.DriverAction" scope="prototype">
+ 		<property name="driver" ref="myDriver"></property>
+ 		<property name="driverService" ref="myDriverService"></property>
+ 	</bean>
+ 
+ </beans>
