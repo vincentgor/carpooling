@@ -9,8 +9,8 @@
         <id name="id">
             <generator class="identity" />
         </id>
-        <property name="nickName"/>
-        <property name="cellphone"  not-null="true" />
-        <property name="password"  not-null="true" />
+        <property name="nickName" column="nickName"/>
+        <property name="cellphone" column="cellphone" not-null="true" />
+        <property name="password"  not-null="true" /> 
     </class>
 </hibernate-mapping>

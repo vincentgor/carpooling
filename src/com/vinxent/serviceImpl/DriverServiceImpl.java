@@ -6,9 +6,14 @@ import com.vinxent.dao.DriverDao;
 import com.vinxent.model.Driver;
 import com.vinxent.service.DriverService;
 
+/**
+ * 司机业务组件实现类
+ * @author vinxent
+ *
+ */
 public class DriverServiceImpl implements DriverService {
 	
-	private DriverDao driverDao;
+	private DriverDao driverDao;   //司机dao接口
 
 	@Override
 	public Integer addDriver(Driver driver) {

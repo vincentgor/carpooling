@@ -4,9 +4,14 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.vinxent.model.Guest;
 import com.vinxent.service.GuestService;
 
+/**
+ * 拼客action，接收相关请求
+ * @author vinxent
+ *
+ */
 public class GuestAction extends ActionSupport {
 	
-	private GuestService guestService;
+	private GuestService guestService;    //拼客业务逻辑组件
 	
 	private Guest guest;  //拼客类
 	
@@ -15,9 +20,6 @@ public class GuestAction extends ActionSupport {
 	private String cellphone;  //手机号码
 	private String password;   //密码
 
-	/**
-	 * 拼客功能
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	/**
@@ -26,14 +28,6 @@ public class GuestAction extends ActionSupport {
 	 * @throws Exception
 	 */
 	public String doLogin() throws Exception {
-		
-		guest = guestService.findGuest(id);
-		if (guest!=null) {
-			System.out.println(guest.getNickName());
-		} else {
-			System.out.println("查不到这个人啦");
-		}
-		
 		return SUCCESS;
 	}
 	
@@ -45,8 +39,6 @@ public class GuestAction extends ActionSupport {
 	public String doRegist() throws Exception {
 		return SUCCESS;
 	}
-	
-	
 	
 	public Guest getGuest() {
 		return guest;
@@ -95,6 +87,4 @@ public class GuestAction extends ActionSupport {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-
 }

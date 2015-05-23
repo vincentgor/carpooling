@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.vinxent.model.Guest;
 
+/**
+ * 拼客dao接口，操作数据库
+ * @author vinxent
+ *
+ */
 public interface GuestDao {
 
 	/**

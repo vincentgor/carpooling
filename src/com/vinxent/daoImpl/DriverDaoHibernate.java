@@ -7,6 +7,11 @@ import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import com.vinxent.dao.DriverDao;
 import com.vinxent.model.Driver;
 
+/**
+ * 司机dao实现类，操作数据库
+ * @author vinxent
+ *
+ */
 public class DriverDaoHibernate extends HibernateDaoSupport implements DriverDao {
 
 	@Override

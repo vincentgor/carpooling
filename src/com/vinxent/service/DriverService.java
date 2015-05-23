@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.vinxent.model.Driver;
 
+/**
+ * 司机业务组件接口
+ * @author vinxent
+ *
+ */
 public interface DriverService {
 	
 	/**

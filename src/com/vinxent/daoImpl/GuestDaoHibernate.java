@@ -7,6 +7,11 @@ import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import com.vinxent.dao.GuestDao;
 import com.vinxent.model.Guest;
 
+/**
+ * 拼客dao实现类，操作数据库
+ * @author vinxent
+ *
+ */
 public class GuestDaoHibernate extends HibernateDaoSupport implements GuestDao {
 
 	@Override

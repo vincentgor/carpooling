@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.vinxent.model.Driver;
 
+/**
+ * 司机dao接口，操作数据库
+ * @author vinxent
+ *
+ */
 public interface DriverDao {
 
 	/**

@@ -2,19 +2,27 @@ package com.vinxent.model;
 
 import java.util.List;
 
+/**
+ * 订单类
+ * @author vinxent
+ *
+ */
 public class Order {
 	
-	private String number;
-	private String createTime;
-	private String startingPlace;
-	private String Destination;
-	private String startingTimeLeft;
-	private String startingTimeRight;
-	private int guestCount;
-	private float price;
-	private int driverID;
+	private int id;
+	private String number;         //拼单号
+	private String createTime;     //创建时间
+	private String startingPlace;   //出发地
+	private String Destination;      //目的地
+	private String startingTimeLeft;    //出发时间（左区间）
+	private String startingTimeRight;   //出发时间（右区间）
+	private int guestCount;        //拼客人数
+	private float price;         //拼车单价
+	private int driverID;         //司机id
+	private int status;         //拼单状态
+	private int currentCount;         //目前人数
 	
-	private List<Guest> guestList;
+	private List<Guest> guestList;   //同订单的拼客们
 	
 	public String getNumber() {
 		return number;
@@ -75,6 +83,24 @@ public class Order {
 	}
 	public void setGuestList(List<Guest> guestList) {
 		this.guestList = guestList;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public int getCurrentCount() {
+		return currentCount;
+	}
+	public void setCurrentCount(int currentCount) {
+		this.currentCount = currentCount;
 	}
 
 }

@@ -6,7 +6,7 @@
 	<constant name="struts.ui.theme" value="simple" />
 	<constant name="struts.i18n.encoding" value="utf-8" />
 	<constant name="struts.multipart.maxSize" value="1073741824" />
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.devMode" value="false" />
 	<constant name="struts.objectFactory" value="spring" />
 
 

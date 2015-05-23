@@ -1,11 +1,16 @@
 package com.vinxent.model;
 
+/**
+ * 司机类
+ * @author vinxent
+ *
+ */
 public class Driver {
 	
 	private int id;
-	private String nickName;
-	private String cellphone;
-	private String password;
+	private String nickName;    //昵称
+	private String cellphone;   //手机号码
+	private String password;    //密码
 	
 	public String getNickName() {
 		return nickName;

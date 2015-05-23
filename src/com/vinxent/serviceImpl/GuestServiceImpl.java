@@ -6,9 +6,14 @@ import com.vinxent.dao.GuestDao;
 import com.vinxent.model.Guest;
 import com.vinxent.service.GuestService;
 
+/**
+ * 拼客业务组件实现类
+ * @author vinxent
+ *
+ */
 public class GuestServiceImpl implements GuestService {
 	
-	private GuestDao guestDao;
+	private GuestDao guestDao;   //拼客dao接口
 
 	@Override
 	public Integer addGuest(Guest guest) {
@@ -44,8 +49,7 @@ public class GuestServiceImpl implements GuestService {
 		return guestDao.findAll();
 	}
 	
-	
-	
+
 	public GuestDao getGuestDao() {
 		return guestDao;
 	}
@@ -53,6 +57,4 @@ public class GuestServiceImpl implements GuestService {
 	public void setGuestDao(GuestDao guestDao) {
 		this.guestDao = guestDao;
 	}
-
-
 }
